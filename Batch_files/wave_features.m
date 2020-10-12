@@ -30,17 +30,17 @@ switch feature
 				cc(:,nccum(cf-1)+1:nccum(cf)) = reshape(c_l(wccum(cf-1)+1:wccum(cf)),nc(cf),nspk)';
 			end
 		catch
-		    if exist('wavedec')                             % Looks for Wavelets Toolbox
-				for i=1:nspk                                % Wavelet decomposition
-					[c,l] = wavedec(spikes(i,:),scales,'haar');
-					cc(i,1:ls) = c(1:ls);
-				end
-			else
+% 		    if exist('wavedec')                             % Looks for Wavelets Toolbox
+% 				for i=1:nspk                                % Wavelet decomposition
+% 					[c,l] = wavedec(spikes(i,:),scales,'haar');
+% 					cc(i,1:ls) = c(1:ls);
+% 				end
+% 			else
 				for i=1:nspk                                % Replaces Wavelets Toolbox, if not available
 					[c,l] = fix_wavedec(spikes(i,:),scales);
 					cc(i,1:ls) = c(1:ls);
 				end
-			end
+% 			end
 		
 		end
 		
